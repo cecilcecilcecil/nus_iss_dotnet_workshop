@@ -11,10 +11,20 @@ namespace NUnitTest
         private ToDoList toDoList;
         private Tasks task1;
 
+        private Tasks taskItem1;
+        private Tasks taskItem2;
+        private ToDoList TDL;
+
         [TestInitialize]
         [ExpectedException(typeof(ArgumentException))]
         public void SetUp() 
         {
+
+            //Comments from YY
+            //Initialise Test Fixtures
+            taskItem1 = new Tasks("Task Item 1 desc");
+            taskItem2 = new Tasks("Task Item 2 desc");
+            TDL = new ToDoList();
             toDoList = new ToDoList
             {
                 UserList = new List<User>()
@@ -28,42 +38,63 @@ namespace NUnitTest
         public void tearDown()
         {
             // Uninitialise test Fixtures
+            taskItem1 = null;
+            taskItem2 = null;
+            TDL = null;
         }
 
         [TestMethod]
         public void TestAddTask()
         {
-            //Given
-            ToDoList todoList = new ToDoList();
+            //Add Item to ToDoList
+            TDL.addTask(taskItem1);
 
-            //When
-            Tasks newTask = new Tasks("test");
-            todoList.addTask(newTask);
+            //Check ToDoList size is equal to the number of ToDoList added
+            Assert.AreEqual(1, TDL.getAllTasks().Count);
 
-            //Then
-            List<Tasks> taskList = todoList.getAllTasks();
+            //Check ToDoList equals to the ToDoList specify
+            Assert.AreEqual(taskItem1, TDL.getTask(taskItem1.getDescription()));
 
-            foreach (var task in taskList)
-            {
-                if (task.getDescription() == newTask.getDescription())
-                {
-                    Console.WriteLine(task.getDescription());
-                }
-            }
-
-            Assert.Fail("Not implemented yet");
         }
 
         [TestMethod]
         public void TestgetStatus()
         {
+            ToDoList todoList = new ToDoList();
+
+            Tasks getstatus = new Tasks("test");
+            todoList.addTask(getstatus);
+            Assert.IsTrue(todoList.getStatus()== true);
             Assert.Fail("Not implemented yet");
         }
 
         [TestMethod]
+        public void TestgetUpdate()
+        {
+
+            Assert.Fail("Not implemented yet");
+        }
+
+
+        [TestMethod]
         public void TestRemoveTask()
         {
-            Assert.Fail("Not implemented yet");
+            //Add Item to ToDoList
+            TDL.addTask(taskItem1);
+            TDL.addTask(taskItem2);
+
+            //Check ToDoList size is equal to the number of ToDoList added
+            Assert.AreEqual(2, TDL.getAllTasks().Count);
+
+            // Remove 1 item in To Do List
+            Tasks taskRemove = TDL.removeTask(taskItem1.getDescription()); // remove testItem1
+
+            // Check the removed item in To Do List is the task item to remove.
+            Assert.AreEqual(taskRemove.getDescription(), taskItem1.getDescription());
+
+            //Check ToDoList size after 1 item is removed
+            Assert.AreEqual(1, TDL.getAllTasks().Count);
+
         }
 
         [TestMethod]
