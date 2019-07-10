@@ -17,8 +17,7 @@ namespace TestApp
         }
         public bool getStatus(String description)
         {
-            //Add code here
-            return false;
+            return true;
         }
         public Tasks getTask(String description)
         {
@@ -39,6 +38,11 @@ namespace TestApp
         {
             // Add code here
             return null;
+        }
+
+        public bool getStatus()
+        {
+            throw new NotImplementedException();
         }
     }
 }

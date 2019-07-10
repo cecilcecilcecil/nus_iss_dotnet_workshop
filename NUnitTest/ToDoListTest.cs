@@ -50,12 +50,27 @@ namespace NUnitTest
         [TestMethod]
         public void TestgetStatus()
         {
+            ToDoList todoList = new ToDoList();
+
+            Tasks getstatus = new Tasks("test");
+            todoList.addTask(getstatus);
+            Assert.IsTrue(todoList.getStatus()== true);
             Assert.Fail("Not implemented yet");
         }
 
         [TestMethod]
+        public void TestgetUpdate()
+        {
+
+            Assert.Fail("Not implemented yet");
+        }
+
+
+        [TestMethod]
         public void TestRemoveTask()
         {
+
+
             Assert.Fail("Not implemented yet");
         }
 
