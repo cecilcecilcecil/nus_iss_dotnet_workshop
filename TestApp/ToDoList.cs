@@ -9,7 +9,7 @@ namespace TestApp
 
         public void addTask(Tasks task)
         {
-            tasks.Add(Guid.NewGuid().ToString(), task);
+            tasks.Add(task.getDescription(), task);
         }
         public void completeTask(String description)
         {
@@ -23,19 +23,22 @@ namespace TestApp
         public Tasks getTask(String description)
         {
             // Add code here
-            return null;
+            return tasks[description];
         }
         public Tasks removeTask(String description)
         {
             // Add code here
-            return null;
+            Tasks task = tasks[description];
+            tasks.Remove(description);
+
+            return task;
         }
-        public List<Tasks> getAllTasks()
+        public Dictionary<String, Tasks> getAllTasks()
         {
             // Add code here
-            return null;
+            return tasks;
         }
-        public List<Tasks> getCompletedTasks()
+        public Dictionary<String, Tasks> getCompletedTasks()
         {
             // Add code here
             return null;
