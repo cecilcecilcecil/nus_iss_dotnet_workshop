@@ -64,7 +64,7 @@ namespace NUnitTest
 
             Tasks getstatus = new Tasks("test");
             todoList.addTask(getstatus);
-            Assert.IsTrue(todoList.getStatus()== true);
+            Assert.IsTrue(todoList.getStatus("test")== true);
             Assert.Fail("Not implemented yet");
         }
 
