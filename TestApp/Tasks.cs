@@ -10,8 +10,7 @@ namespace TestApp
     {
         private String description = null;
         private bool isComplete { get; set; } = false;
-        //hi
-
+        public string AssignedUser { get; set; }
 
         public Tasks(String description)
         {

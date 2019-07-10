@@ -6,6 +6,7 @@ namespace TestApp
     public class ToDoList
     {
         private Dictionary<String, Tasks> tasks = new Dictionary<String, Tasks>();
+        public List<User> UserList { get; set; }
 
         public void addTask(Tasks task)
         {
@@ -39,6 +40,38 @@ namespace TestApp
         {
             // Add code here
             return null;
+        }
+
+        public bool AddUserToToDoList (User user, ToDoList toDoList)
+        {
+            bool success = false;
+
+            if (user != null)
+            {
+                toDoList.UserList.Add(user);
+
+                success = true;
+
+                return success;
+            }
+
+            return success;
+        }
+
+        public bool AssignUserToTask(string userId, Tasks task)
+        {
+            bool success = false;
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return success;
+            }
+
+            task.AssignedUser = userId;
+
+            success = true;
+
+            return success;
         }
     }
 }
